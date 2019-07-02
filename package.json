@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
     "rxjs": "~6.4.0",
+    "tesseract.js": "^2.0.0-alpha.11",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
