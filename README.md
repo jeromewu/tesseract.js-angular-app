@@ -1,6 +1,6 @@
-# TesseractAngularApp
+# Tesseract.js Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.6.
+This app demos how to use tesseract.js v2 in angular
 
 ## Development server
 
