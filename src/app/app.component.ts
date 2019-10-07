@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TesseractWorker } from 'tesseract.js';
+import { createWorker } from 'tesseract.js';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +10,17 @@ export class AppComponent {
   title = 'tesseract.js-angular-app';
   ocrResult = 'Recognizing...';
   constructor() {
-    const worker = new TesseractWorker();
-    worker
-      .recognize('https://tesseract.projectnaptha.com/img/eng_bw.png')
-      .progress((p) => {
-        console.log('progress', p);
-      })
-      .then(({ text }) => {
-        this.ocrResult = text;
-        worker.terminate();
-      });
+    this.doOCR();
+  }
+  async doOCR() {
+    const worker = createWorker({
+      logger: m => console.log(m),
+    });
+    await worker.load();
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng');
+    const { data: { text } } = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
+    console.log(text);
+    await worker.terminate();
   }
 }
