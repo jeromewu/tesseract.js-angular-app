@@ -20,6 +20,7 @@ export class AppComponent {
     await worker.loadLanguage('eng');
     await worker.initialize('eng');
     const { data: { text } } = await worker.recognize('https://tesseract.projectnaptha.com/img/eng_bw.png');
+    this.ocrResult = text;
     console.log(text);
     await worker.terminate();
   }
